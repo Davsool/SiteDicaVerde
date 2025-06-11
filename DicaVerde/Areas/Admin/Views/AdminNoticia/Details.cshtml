@@ -1,0 +1,22 @@
+﻿@model DicaVerde.Models.Noticia
+
+@{
+    ViewData["Title"] = "Detalhes da Notícia";
+}
+
+<h1>Detalhes da Notícia</h1>
+
+<div class="mb-3">
+    <strong>Título:</strong> @Model.Titulo
+</div>
+<div class="mb-3">
+    <strong>Conteúdo:</strong>
+    <p>@Model.Conteudo</p>
+</div>
+<div class="mb-3">
+    <strong>Data de Publicação:</strong> @Model.DataPublicacao.ToString("dd/MM/yyyy")
+</div>
+
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

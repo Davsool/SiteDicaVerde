@@ -1,0 +1,20 @@
+﻿@model DicaVerde.Models.Relatorio
+@{
+    ViewData["Title"] = "Excluir Relatório";
+}
+
+<h1>Excluir Relatório</h1>
+
+<h3>Tem certeza que deseja excluir este relatório?</h3>
+
+<div>
+    <p><strong>Título:</strong> @Model.Titulo</p>
+    <p><strong>Projeto:</strong> @Model.Projeto?.Nome</p>
+    <p><strong>Descrição:</strong> @Model.Descricao</p>
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

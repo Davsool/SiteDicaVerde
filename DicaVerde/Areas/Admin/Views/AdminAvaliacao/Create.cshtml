@@ -1,0 +1,19 @@
+﻿@model DicaVerde.Models.Avaliacao
+
+<h4>Avaliar Projeto</h4>
+<form asp-action="Create">
+    <input type="hidden" asp-for="ProjetoId" value="@ViewBag.ProjetoId" />
+    <div class="form-group">
+        <label asp-for="Nota"></label>
+        <select asp-for="Nota" class="form-control">
+            <option value="">Selecione</option>
+            @for (int i = 1; i <= 5; i++)
+            {
+                <option value="@i">@i estrela(s)</option>
+            }
+        </select>
+        <span asp-validation-for="Nota" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="UserId" value="1" /> @* Simulação de login *@
+    <button type="submit" class="btn btn-primary">Avaliar</button>
+</form>

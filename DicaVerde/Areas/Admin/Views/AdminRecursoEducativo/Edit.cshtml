@@ -1,0 +1,38 @@
+﻿@model DicaVerde.Models.RecursoEducativo
+@{
+    ViewData["Title"] = "Editar Recurso Educativo";
+}
+
+<h2>Editar Recurso Educativo</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Titulo"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Url"></label>
+        <input asp-for="Url" class="form-control" />
+        <span asp-validation-for="Url" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <input asp-for="Ativo" class="form-check-input" />
+        <label asp-for="Ativo" class="form-check-label"></label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Salvar Alterações</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

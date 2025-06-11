@@ -1,0 +1,17 @@
+﻿@model DicaVerde.Models.RecursoEducativo
+@{
+    ViewData["Title"] = "Detalhes do Recurso";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>@Model.Titulo</h4>
+    <p><strong>Descrição:</strong> @Model.Descricao</p>
+    <p><strong>Data:</strong> @Model.DataPublicacao.ToShortDateString()</p>
+    <p><strong>URL:</strong> <a href="@Model.Url" target="_blank">@Model.Url</a></p>
+    <p><strong>Ativo:</strong> @(Model.Ativo ? "Sim" : "Não")</p>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

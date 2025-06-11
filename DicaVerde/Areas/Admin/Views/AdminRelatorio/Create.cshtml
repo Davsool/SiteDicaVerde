@@ -1,0 +1,34 @@
+﻿@model DicaVerde.Models.Relatorio
+@{
+    ViewData["Title"] = "Novo Relatório";
+    var projetos = ViewBag.Projetos as List<DicaVerde.Models.Projeto>;
+}
+
+<h1>Novo Relatório</h1>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Titulo"></label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProjetoId">Projeto</label>
+        <select asp-for="ProjetoId" class="form-control">
+            <option value="">-- Selecione --</option>
+            @foreach (var projeto in projetos)
+            {
+                <option value="@projeto.Id">@projeto.Nome</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Arquivo PDF</label>
+        <input type="file" name="arquivo" class="form-control-file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,40 @@
+﻿@model DicaVerde.Models.Relatorio
+@{
+    ViewData["Title"] = "Editar Relatório";
+    var projetos = ViewBag.Projetos as List<DicaVerde.Models.Projeto>;
+}
+
+<h1>Editar Relatório</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Titulo"></label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProjetoId">Projeto</label>
+        <select asp-for="ProjetoId" class="form-control">
+            <option value="">-- Selecione --</option>
+            @foreach (var projeto in projetos)
+            {
+                <option value="@projeto.Id" selected="@(projeto.Id == Model.ProjetoId)">
+                    @projeto.Nome
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Arquivo PDF Atual</label><br />
+        @if (!string.IsNullOrEmpty(Model.CaminhoArquivo))
+        {
+            <a href="@Model.CaminhoArquivo" target="_blank">Ver atual</a>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

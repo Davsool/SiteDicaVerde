@@ -1,0 +1,60 @@
+﻿@model DicaVerde.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Bem-vindo ao Site Sustentável";
+}
+
+<div class="container mt-4">
+    <div class="container mt-4">
+        <div class="jumbotron bg-light p-4 rounded shadow-sm">
+            <h1 class="display-4">Bem-vindo ao Site Sustentável 🌱</h1>
+            <p class="lead">
+                Um portal para promover educação, participação e ações sustentáveis em sua comunidade.
+            </p>
+            <hr class="my-4" />
+            <p>
+                Explore notícias ambientais, projetos sustentáveis, recursos educativos gratuitos e muito mais.
+            </p>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <h3>📰 Últimas Notícias</h3>
+                <ul>
+                    @foreach (var noticia in Model.Noticias)
+                    {
+                        <li>
+                            <a href="@Url.Action("Details", "Noticia", new { id = noticia.Id })">
+                                @noticia.Titulo
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3>📘 Recursos Educativos</h3>
+                <ul>
+                    @foreach (var recurso in Model.RecursosEducativos)
+                    {
+                        <li>
+                            <a href="@recurso.Url" target="_blank">
+                                @recurso.Titulo
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3>📊 Participação Comunitária</h3>
+                <p>
+                    Participe de fóruns, enquetes e grupos de ação local. Sua voz importa!
+                </p>
+                <a class="btn btn-outline-success" href="/Projetos">Conheça os projetos</a>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+﻿@model DicaVerde.Models.RecursoEducativo
+@{
+    ViewData["Title"] = "Detalhes do Recurso";
+}
+
+<h2>@Model.Titulo</h2>
+
+<p><strong>Publicado em:</strong> @Model.DataPublicacao.ToShortDateString()</p>
+
+<p>@Model.Descricao</p>
+
+<p>
+    <a href="@Model.Url" class="btn btn-success" target="_blank">Acessar Jogo</a>
+</p>
+
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

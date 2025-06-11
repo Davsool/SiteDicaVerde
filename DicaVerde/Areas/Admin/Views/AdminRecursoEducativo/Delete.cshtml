@@ -1,0 +1,15 @@
+﻿@model DicaVerde.Models.RecursoEducativo
+@{
+    ViewData["Title"] = "Excluir Recurso Educativo";
+}
+
+<h2>Confirmar Exclusão</h2>
+
+<h4>Você tem certeza que deseja excluir o recurso:</h4>
+<p><strong>@Model.Titulo</strong></p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

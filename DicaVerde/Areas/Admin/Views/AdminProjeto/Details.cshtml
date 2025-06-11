@@ -1,0 +1,83 @@
+﻿@model DicaVerde.Models.Projeto
+
+@{
+    ViewData["Title"] = "Detalhes do Projeto";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Projeto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Título</dt>
+        <dd class="col-sm-10">@Model.Nome</dd>
+
+        <dt class="col-sm-2">Descrição</dt>
+        <dd class="col-sm-10">@Model.Descricao</dd>
+
+        <dt class="col-sm-2">Data Início</dt>
+        <dd class="col-sm-10">@Model.DataInicio.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Data Fim</dt>
+        <dd class="col-sm-10">@((Model.DataFim.HasValue) ? Model.DataFim.Value.ToShortDateString() : "-")</dd>
+
+        <dt class="col-sm-2">Ativo</dt>
+        <dd class="col-sm-10">@(Model.Ativo ? "Sim" : "Não")</dd>
+    </dl>
+</div>
+
+<hr />
+
+<h4>Comentários</h4>
+@if (Model.Comentarios != null && Model.Comentarios.Any())
+{
+    <ul class="list-group mb-3">
+        @foreach (var comentario in Model.Comentarios)
+        {
+            <li class="list-group-item">
+                <strong>@comentario.Usuario.NomeCompleto</strong> (@comentario.DataCriacao.ToString("dd/MM/yyyy HH:mm")):<br />
+                @comentario.Texto
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Nenhum comentário disponível.</p>
+}
+
+<hr />
+
+<h4>Avaliações</h4>
+@if (Model.Avaliacoes != null && Model.Avaliacoes.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Nota</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var avaliacao in Model.Avaliacoes)
+            {
+                <tr>
+                    <td>@avaliacao.Usuario.NomeCompleto</td>
+                    <td>@avaliacao.Nota</td>
+                    <td>@avaliacao.DataCriacao.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma avaliação disponível.</p>
+}
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>

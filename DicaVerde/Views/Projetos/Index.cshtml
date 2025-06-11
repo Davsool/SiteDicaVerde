@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DicaVerde.Models.Projeto>
+
+<h2>Projetos</h2>
+<hr />
+<div class="row">
+    @foreach (var projeto in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 shadow-sm">
+                <h5>@projeto.Nome</h5>
+                <p>@projeto.Descricao.Substring(0, Math.Min(100, projeto.Descricao.Length))...</p>
+                <a href="@Url.Action("Details", "Projetos", new { id = projeto.Id })" class="btn btn-sm btn-outline-success">Ver Detalhes</a>
+            </div>
+        </div>
+    }
+</div>

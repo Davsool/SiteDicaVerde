@@ -1,0 +1,24 @@
+﻿@model DicaVerde.Models.Noticia
+
+@{
+    ViewData["Title"] = "Excluir Notícia";
+}
+
+<h1>Excluir Notícia</h1>
+
+<div class="alert alert-danger">
+    Tem certeza que deseja excluir esta notícia?
+</div>
+
+<div class="mb-3">
+    <strong>Título:</strong> @Model.Titulo
+</div>
+<div class="mb-3">
+    <strong>Data de Publicação:</strong> @Model.DataPublicacao.ToString("dd/MM/yyyy")
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
